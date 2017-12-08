@@ -9,7 +9,29 @@ sfdx force:source:convert -d mdapipkg_output/ --packagename <PACKAGENAME>
 sfdx force:mdapi:deploy -c -d ./mdapipkg_output -u <sfdc.USERNAME>
 ```
 
-Configure Process Builder flow to trigger POST to Webhook.
+Configure [Process Builder](Workflow.png) flow to trigger POST to Webhook.
+
+## Tests
+```
+sfdx force:apex:test:run -u <sfdc.USERNAME> -r human -w 2 -n SimpleWebHookTest
+```
+
+## Description of Files and Directories
+
+##### All the Apex is here
+[force-app/main/default/classes](/force-app/main/default/classes)
+
+##### Callout to URL, does most of the work
+[SimpleWebHook.cls](/force-app/main/default/classes/SimpleWebHook.cls)
+
+##### Async wrapper for the Callout
+[SimpleWebHookQueueable.cls](/force-app/main/default/classes/SimpleWebHookQueueable.cls)
+
+##### Invocable wrapper for the Callout
+[SimpleWebHookInvocable.cls](/force-app/main/default/classes/SimpleWebHookInvocable.cls)
+
+##### Unit test
+[SimpleWebHookTest.cls](/force-app/main/default/classes/SimpleWebHookTest.cls)
 
 ## Useful SFDX commands
 
@@ -67,9 +89,6 @@ $> sfdx force:mdapi:deploy:report
 ```
 
 ## Resources
-
-
-## Description of Files and Directories
 
 
 ## Issues
