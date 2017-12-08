@@ -1,6 +1,15 @@
-# SimpleWebHook (SFDX)
+# SimpleWebHook ([SFDX](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm))
 
-Example force.com project to integrate with IFTTT webhooks (https://ifttt.com/maker_webhooks).
+Example force.com project to integrate with IFTTT webhooks ([maker webhooks](https://ifttt.com/maker_webhooks)).
+
+## Installation
+```
+sfdx force:auth:web:login
+sfdx force:source:convert -d mdapipkg_output/ --packagename <PACKAGENAME>
+sfdx force:mdapi:deploy -c -d ./mdapipkg_output -u <sfdc.USERNAME>
+```
+
+Configure Process Builder flow to trigger POST to Webhook.
 
 ## Useful SFDX commands
 
