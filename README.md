@@ -4,44 +4,45 @@ Example force.com project to integrate with IFTTT webhooks (https://ifttt.com/ma
 
 ## Useful SFDX commands
 
+# Authorize SFDX to access an org.
 $> sfdx force:auth:web:login
-    ~ Authorize SFDX to access an org.
 
-$> sfdx force:project:create --projectname MyDevOrg
-    ~ Create new SFDX project. CD into project folder.
+# Create new SFDX project. CD into project folder.
+$> sfdx force:project:create --projectname <PROJECT NAME>
 
+# Set the default user name to be used with the Org.
 $> sfdx force:config:set defaultusername=<USERNMAE>
-    ~ Set the default user name to be used with the Org.
 
+# Open the default force.com org in a browser
 $> sfdx force:org:open
-    ~ Open the default force.com org in a browser
 
+# Get a package's metadata from the Org. 
+#   ~ Downloads a Zip file needs to be unzipped.
 $> sfdx force:mdapi:retrieve -s -r .\mdapipkg -u <USERNAME> -p <PACKAGENAME>
-    ~ Get a package's metadata from the Org. Downloads a Zip file needs to be unzipped.
 
+# Convert metadata package to SFDX project format.
 $> sfdx force:mdapi:convert -r .\mdapipkg
-    ~ Convert metadata package to SFDX project format.
 
+# Convert SFDX project format to metadata package.
 $> sfdx force:source:convert -d mdapipkg_output/ --packagename <PACKAGENAME>
-    ~ Convert SFDX project format to metadata package.
 
+# Run all tests
 $> sfdx force:apex:test:run
-    ~ Run all tests
 
+# Run named tests
 $> sfdx force:apex:test:run -n <CLASSNAME,CLASSNAME>
-    ~ Run named tests
 
+# Get test report in format human, tap, json, or junit.
 $> sfdx force:apex:test:report -i <TESTRUNID> -r <human|tap|json|junit>
-    ~ Get test report in format human, tap, json, or junit.
 
+# Metadata deploy to org check only.
 $> sfdx force:mdapi:deploy -c -d .\mdapipkg_output -l RunSpecifiedTests -r <CLASSNAME,CLASSNAME>
-    ~ Metadata deploy to org check only.
 
+# Metadata deploy to org. 
 $> sfdx force:mdapi:deploy -d .\mdapipkg_output -l RunSpecifiedTests -r <CLASSNAME,CLASSNAME>
-    ~ Metadata deploy to org.    
 
+# Get deploy report.
 $> sfdx force:mdapi:deploy:report
-    ~ Get deploy report.
 
 ## Resources
 
