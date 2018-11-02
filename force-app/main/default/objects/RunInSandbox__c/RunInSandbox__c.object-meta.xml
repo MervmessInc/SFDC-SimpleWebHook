@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
     <customSettingsType>Hierarchy</customSettingsType>
-    <description>*** Warning *** It is dangerous to run integrations in sandbox Orgs without planning 1st. Check that all connections to external systems have been updated to point to reciprocal non-production environments before setting "Allow".</description>
+    <description>*** Warning *** It is dangerous to run integrations in sandbox Orgs without planning 1st. Check that all connections to external systems have been updated to point to reciprocal non-production environments before setting &quot;Allow&quot;.</description>
     <enableFeeds>false</enableFeeds>
     <label>RunInSandbox</label>
     <visibility>Public</visibility>

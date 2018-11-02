@@ -1,46 +1,43 @@
-/**
-* @author support@dev.fairsail.com
-* @description 
-*/ 
 @IsTest
 public class SimpleWebHookTest {
-	testmethod static void testSimpleWebHook() {
 
-		RunInSandbox__c RunInSandbox = new RunInSandbox__c( Allow__c = SimpleWebHook.runningInASandbox() );
-		insert RunInSandbox;
+	@IsTest
+	static void testSimpleWebHook() {
 
-        Test.startTest();
+		RunInSandbox__c runInSandbox = new RunInSandbox__c( Allow__c = SimpleWebHook.runningInASandbox() );
+		insert runInSandbox;
+
+		Test.startTest();
 		Test.setMock(HttpCalloutMock.class, new SimpleWebHookMockHttpResponse());
 
 		Id jobID = System.enqueueJob(
 			new SimpleWebHookQueueable(
-				'https://maker.ifttt.com/trigger', 
-                'Hello',
-                'World',
-                '!!!'));
-		
+				'Hello',
+				'World',
+				'!!!'));
+
 		jobID = System.enqueueJob(
-			new SimpleWebHookQueueable(
-				'https://maker.ifttt.com/trigger'));
+			new SimpleWebHookQueueable());
 
 		SimpleWebHookInvocable.webHookRequest request = new SimpleWebHookInvocable.webHookRequest();
-		request.uri = 'https://maker.ifttt.com/trigger';
+		request.value1 = 'Hello World!!!';
 		List<SimpleWebHookInvocable.webHookRequest> requests = new List<SimpleWebHookInvocable.webHookRequest>();
-        requests.add(request);
+		requests.add(request);
 		SimpleWebHookInvocable.sendWebHook(requests);
 
 		Test.stopTest();
 	}
 
-	testmethod static void testRunInSandbox() {
+	@IsTest
+	static void testRunInSandbox() {
 
-		RunInSandbox__c RunInSandbox = new RunInSandbox__c( Allow__c = !SimpleWebHook.runningInASandbox() );
-		insert RunInSandbox;
+		RunInSandbox__c runInSandbox = new RunInSandbox__c( Allow__c = !SimpleWebHook.runningInASandbox() );
+		insert runInSandbox;
 
 		Test.startTest();
 		Test.setMock(HttpCalloutMock.class, new SimpleWebHookMockHttpResponse());
 
-		SimpleWebHook wh = new SimpleWebHook('https://maker.ifttt.com/trigger');
+		SimpleWebHook wh = new SimpleWebHook();
 		System.debug('\t*** simpleWebHook ***\n'+JSON.serializePretty(wh));
 		wh.sendWebHook();
 
