@@ -12,7 +12,7 @@ public inherited sharing class WebHookServiceHandler implements Callable {
 
 	private User getTeamMember(String tmID) {
 		User tm = [
-			select Id, Name, Phone, MobilePhone
+			select Id, Name, Email, Phone, MobilePhone
 			from User
 			where EmployeeNumber =: tmID
 		];
