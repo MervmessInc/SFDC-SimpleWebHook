@@ -15,9 +15,7 @@ global class WebHookService {
 
 	/**
 	 * doPost
-	 * @param  action description
-	 * @param  args   description
-	 * @return        description
+	 * http -j POST https:/<force.com site>/services/apexrest/webhook action=getTeamMember args='{"arg1":"90008053"}'
 	 */
 	@HttpPost
 	global static String doPost(String action, String args) {
