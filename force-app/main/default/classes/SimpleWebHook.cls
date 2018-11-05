@@ -4,17 +4,16 @@
 */
 public inherited sharing class SimpleWebHook {
 	EventBody eventBody;
-
-    public simpleWebHook () {
+	
+	public simpleWebHook () {
 		this.eventBody = new EventBody('','','');
-    }
-
-    public simpleWebHook (String value1, String value2, String value3) {
+	}
+	
+	public simpleWebHook (String value1, String value2, String value3) {
 		this.eventBody = new EventBody(value1,value2,value3);
-    }
-
-    public void sendWebHook () {
-
+	}
+	
+	public void sendWebHook () {
 		Boolean allowSandBox = RunInSandbox__c.getInstance(UserInfo.getUserId()).Allow__c;
 
 		if((allowSandBox && runningInASandbox()) || (!allowSandBox && !runningInASandbox())) {
@@ -42,7 +41,7 @@ public inherited sharing class SimpleWebHook {
 		} else {
 			System.debug('\t*** Check Allow SandBox ***\n\tAllowSandBox:'+AllowSandBox+'\n\trunningInASandbox():'+runningInASandbox());
 		}
-    }
+   }
 
 	private class EventBody {
 		String value1;

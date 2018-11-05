@@ -1,3 +1,4 @@
 .sfdx/*
 .vscode/*
 force-app/main/default/namedCredentials/*
+.mdapipkg/*
