@@ -1,5 +1,5 @@
 /**
-* @author merv@merv.org.uk
+* @author Nigel Hughes
 * @description
 */
 public inherited sharing class SimpleWebHook {
